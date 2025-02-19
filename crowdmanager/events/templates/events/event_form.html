@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+
+{% block title %}
+Event-Creation
+{% endblock title %}
+
+{% block content %}
+<h1>Create a new Event</h1>
+
+        <div>
+          <form method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit-Form"/>
+          </form>
+        
+        </div>
+
+{% endblock content %}
