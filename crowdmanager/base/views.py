@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from .forms import SignUpForm
 
 def baseHome(request):
     return render(request,'base/base_home.html')
@@ -42,9 +43,9 @@ def contact(request):
     return render(request,'base/contactus.html')
 
 def register(request):
-    form = UserCreationForm()
+    form = SignUpForm()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower() 

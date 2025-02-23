@@ -4,6 +4,120 @@
     Login/sign
 {% endblock title %}
 
+
+{% block style %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    justify-content:center;
+    {% comment %} margin-top: 10vh; {% endcomment %}
+}
+
+form {
+    background-color: rgb(240, 240, 240);
+    padding: 2%;
+    margin: 20vh auto;
+    height: 70vh;
+    width: 35vw;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+}
+
+input:not(#RememberMe) {
+    height: 5vh;
+    width: 97%;
+    padding-left: 2%;
+    /* padding: 10px; */
+    /* margin: 10px 0; */
+    margin: 1% 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* display:inline-block; */
+}
+
+label:not(.l) {
+    font-size: large;
+    /* display: block; */
+    text-align: center;
+    margin: 1% 0;
+}
+
+div {
+    text-align: center;
+    margin: 1%;
+}
+
+button {
+    height: 5vh;
+    width: 30%;
+    margin: 1% 35%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    /* font-size: 1.2em; */
+}
+
+.sign1 {
+    color: #4CAF50;
+    font-size: larger;
+}
+
+.line {
+    margin: 0;
+    padding: 0;
+    height: 0.25vh;
+    width: 100%;
+    background-color: black;
+}
+.rem{
+    text-align: center;
+    /* margin: 1%; */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#RememberMe {
+    /* margin: 0; */
+    /* padding: 0; */
+    /* display: inline-block; */
+    width: 9%;
+    height: 70%;
+}
+.l{
+    margin-left: 4%;
+    font-size: large;
+}
+
+@media screen and (max-width: 768px) {
+    form {
+        width: 80vw;
+}
+
+}
+
+li {
+    list-style: none;
+}
+</style>
+{% endblock style %}
+
+
+
+
+
 {% block content %}
 {% if page == 'login' %}
 
@@ -13,7 +127,7 @@
 
 <div>
     {% comment %} Login Form {% endcomment %}
-    <form method="POST" action="">
+    {% comment %} <form method="POST" action="">
          {% csrf_token %}
          <lable>Username:</lable>
          <input type="text" name ="username" placeholder="Enter User Name here..."/>
@@ -24,19 +138,115 @@
          <input type="submit" value="Login"  />
     </form>
     <p>Haven't signed up yet?</p>
-    <a href="{% url 'register'%}">Register&nbsp;Here</a> 
+    <a href="{% url 'register'%}">Register&nbsp;Here</a>  {% endcomment %}
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="sign1">
+            <h1>Login</h1>
+        </div>
+        <div class="line"></div>
+        <div class="user">
+            <label for="Username"> <b>Username/Email</b> </label>
+            <input type="text" name="username" id="Uaername" placeholder="Enter Your Username/Email" required>
+        </div>
+        <div class="pass">
+            <label for="Password"> <b>Password</b> </label>
+            <input type="password" name="password" id="Password" placeholder="Enter Your Password" required>
+        </div>
+       
+        <button type="submit" class="sign2">Login</button>
+     
+
+  
+        {% comment %} <div class="signup">
+            <span>For Create&nbsp;Account&nbsp;</span>
+            <a href="login.html">Click&nbsp;Hear</a>
+        </div> {% endcomment %}
+        <p>Haven't signed up yet?</p>
+        <a href="{% url 'register'%}">Register&nbsp;Here</a> 
+    </form>
+
 
 </div>
 {% else %}
-    <form method="POST" action="">
+    {% comment %} <form method="POST" action="">
     {% csrf_token %}
         {{ form.as_p}}
         <button type="submit">Register</button>
     </form>
     <p>Already registered login here</p>
     <a href="{% url 'login'%}">Login</a>
-<div>
-
+<div> {% endcomment %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="sign1"><h1>Sign&nbsp;Up</h1></div>
+        <div class="line"></div>
+    
+        <!-- Render username field -->
+        <div class="user">
+            <label for="username"> <b>Username</b> </label>
+            {{ form.username }}
+            <!-- Display username errors -->
+            {% if form.username.errors %}
+                <ul class="error-list">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    
+        <!-- Render email field -->
+        <div class="user">
+            <label for="email"> <b>Email</b> </label>
+            {{ form.email }}
+            <!-- Display email errors -->
+            {% if form.email.errors %}
+                <ul class="error-list">
+                    {% for error in form.email.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    
+        <!-- Render password1 field -->
+        <div class="pass">  
+            <label for="password1"> <b>Password</b> </label>
+            {{ form.password1 }}
+            <!-- Display password errors -->
+            {% if form.password1.errors %}
+                <ul class="error-list">
+                    {% for error in form.password1.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    
+        <!-- Render password2 field -->
+        <div class="cpass">
+            <label for="password2"> <b>Confirm Password</b> </label>
+            {{ form.password2 }}
+            <!-- Display confirm password errors -->
+            {% if form.password2.errors %}
+                <ul class="error-list">
+                    {% for error in form.password2.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    
+        <!-- Submit button -->
+        <button type="submit" class="sign2">Sign&nbsp;Up</button>
+    
+        <p>Already registered? Login here</p>
+        <a href="{% url 'login' %}">Login</a>
+    </form>
+    
  
 {% endif %}
 

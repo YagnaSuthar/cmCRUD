@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,150 +8,25 @@
 </head>
 {% block style %}{% endblock style %}
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+<link rel="stylesheet" href="{% static 'styles/main.css'%}">
 
-    * {
-        padding: 0;
-        margin: 0;
-    }
-    {% comment %} this is a body tag here {% endcomment %}
-    body {
-        position: absolute;
-        width:100%;
-        background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000);
-        /* background-color: whitesmoke; */
-        /* background-color: rgb(65, 63, 63); */
-        /* background-color: rgba(0, 0, 0, 0.855); */
-    }
-    
-    header {
-        display: flex;
-        width:100%;
-        height: 7vh;
-        background-color: rgba(0, 0, 0, 0.905);
-        background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000);
-        justify-content: space-between;
-    }
-    
-    nav {
-        height: 7vh;
-      
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-    
-    }
-    
-    .a {
-        margin: 0% 20px;
-        color: white;
-        text-decoration: none;
-        font-size: 1.5em;
-        border: none;
-        font-family: 'Roboto', sans-serif;
-    }
-    
-    .a:hover {
-        font-weight: 500;
-        /* padding: 5px; */
-        font-size: 1.8em;
-        letter-spacing: 1%;
-        border-radius: 5px;
-        background-color: rgb(214, 205, 205);
-        padding: 0.2%;
-        color: rgb(60, 55, 55);
-    }
-    
-    footer {
-        height: 17vh;
-        width: 100vw;
-        background-color: rgb(248, 238, 238);
-    
-        {% comment %} background-color : #1a0b2a; {% endcomment %}
-         position: relative;
-        bottom:0%;
-        /* display: flex; */
-        display: grid;
-        align-content: center;
-        /* align-items: center; */
-        /* justify-content: center; */
-        grid-template-rows: 1fr 1fr;
-        
-        z-index: 1;
-    }
-    
-    .logo {
-        margin: 5px;
-        height: 48px;
-        width: 48px;
-        border-radius: 50%;
-        margin-right: 10px;
-    
-        /* border-radius: 50%;
-        margin-right: 2px; */
-    }
-    
-    .pname {
-        display: inline-block;
-        /* margin-right: 15px; */
-        color: white;
-        letter-spacing: 1%;
-        font-size: 1.5em;
-    }
-    
-    .foot {
-        display: flex;
-        align-items: center;
-        margin-left: 2%;
-    }
-    
-    .symbol {
-        margin: 0.2% 15px;
-        /* background-color: white; */
-    }
-    .social{
-        color: black;
-        display: flex;
-        flex-direction: column;
-        font-size: 1.5em;
-        
-    }
-    .icons{
-        margin: 15px 0px;
-        gap: 15px;
-        display: flex;
-        margin-bottom:1%;
-    }
-    
-    .social-media{
-        display: flex;
-        justify-content: flex-end;
-    }
-    
-    .icons svg{
-        cursor: pointer;
-    }
-    main{
-      {% comment %} background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000); {% endcomment %}
-      {% comment %} color:white; {% endcomment %}
-    }
-    
-    
-    
+<style>
+  .main{
+    background-image: url({% static "images/BG.jpg" %});
+  }
+
 </style>
 <body>
-<header>
+{% comment %} <header>
     <div class="foot">
         <img class="logo" src="TATTOO (1).png" alt="Error" height="" width="" />
         <div class="pname">CrowdManager</div>
       </div>
-    <nav>
+    {% comment %} <nav>
         <a href="{% url 'baseHome'%}" class="a">Home</a>
         <a href="{% url 'eventsHome'%}" class="a">Events</a>
         <a href="{% url 'eventsHome'%}" class="a">Monitor</a>
-        <a href="{% url 'contactus' %}" class="a">Contact&nbsp;us</a>
+        <a href="{% url 'eventsHome'%}" class="a">Contact&nbsp;us</a>
         {% if request.user.is_authenticated %}
         <h4 class="a">Hello&nbsp;{{request.user}}</h4>
         <a href="{% url 'logout'%}" class="a">logout</a>
@@ -158,8 +34,31 @@
         <a href="{% url 'login' %}" class="a">Login/sign&nbsp;up</a>
        {% endif %}
            <hr>
-    </nav>
+    </nav> {% endcomment %}
+{% comment %} 
+      </header>
+{% endcomment %} 
+
+<header>
+  <div class="leftnav">
+      <img class="logo" src="{% static "images/logo.png" %}" alt="Error" height="" width="">
+      <div class="pname">CrowdManager</div>
+  </div>
+  <nav>
+      <a  href="{% url 'baseHome'%}" class="home a">Home</a>
+      <a href="{% url 'eventsHome'%}" class="management a">Management</a>
+      <a href="{% url 'eventsHome'%}" class="aboutus a">Monitor</a>
+      <a href="{% url 'contactus'%}" class="contectus a">Contact&nbsp;us</a>
+      {% if request.user.is_authenticated %}
+      <h4 class="a">Hello&nbsp;{{request.user}}</h4>
+      <a href="{% url 'logout'%}" class="a">logout</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="a">Login/sign&nbsp;up</a>
+      {% endif %}
+  </nav>
 </header>
+
+
 
 
     {% block content%}
@@ -167,7 +66,25 @@
     
     {% endblock content%}
 
-    <footer>
+
+
+{% comment %} footer block here {% endcomment %}
+<footer>
+  <div class="foot">
+      <div class="social">social</div>
+      <div class="icons">
+          <img class="symbol youtube" src="{% static 'svg/3.svg'%}" alt="YouTube" border="0" height="30px"
+              width="30x">
+          <!-- <img class="symbol youtube" src="Free download _ HD PNG youtube logo png - Image ID 474247 _.jpeg" alt=""  height="70px" width="70px"> -->
+          <img class="symbol Instagram" src="{% static 'svg/instagram.svg'%}" alt="" height="30px" width="30px">
+          <img class="symbol whatsapp" src="{% static 'svg/2.svg'%}" alt="" height="30px" width="30px">
+          <img class="symbol github" src="{% static 'svg/4.svg'%}" alt="" height="30px" width="30px">
+      </div>
+  </div>
+</footer>
+
+
+    {% comment %} <footer>
         <div class="social-media">
           <div class="social">
             <p>Social</p>
@@ -235,7 +152,7 @@
             </div>
           </div>
         </div>
-      </footer>
+      </footer> {% endcomment %}
       <script>
       {% block script %}
       {% endblock script %}

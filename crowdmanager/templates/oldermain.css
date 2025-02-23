@@ -1,0 +1,131 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    {% comment %} this is a body tag here {% endcomment %}
+    body {
+        position: absolute;
+        width:100%;
+        {% comment %} background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000); {% endcomment %}
+        /* background-color: whitesmoke; */
+        /* background-color: rgb(65, 63, 63); */
+        /* background-color: rgba(0, 0, 0, 0.855); */
+    }
+    
+    header {
+        display: flex;
+        width:100%;
+        height: 7vh;
+        background-color: rgba(0, 0, 0, 0.905);
+        {% comment %} background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000); {% endcomment %}
+        justify-content: space-between;
+    }
+    
+    nav {
+        height: 7vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    
+    }
+    
+    .a {
+        margin: 0% 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.5em;
+        border: none;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    .a:hover {
+        font-weight: 500;
+        /* padding: 5px; */
+        font-size: 1.8em;
+        letter-spacing: 1%;
+        border-radius: 5px;
+        background-color: rgb(214, 205, 205);
+        padding: 0.2%;
+        color: rgb(60, 55, 55);
+    }
+    
+    footer {
+        height: 17vh;
+        width: 100vw;
+        background-color: rgb(248, 238, 238);
+    
+        {% comment %} background-color : #1a0b2a; {% endcomment %}
+         position: relative;
+        bottom:0%;
+        /* display: flex; */
+        display: grid;
+        align-content: center;
+        /* align-items: center; */
+        /* justify-content: center; */
+        grid-template-rows: 1fr 1fr;
+        
+        z-index: 1;
+    }
+    
+    .logo {
+        margin: 5px;
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+    
+        /* border-radius: 50%;
+        margin-right: 2px; */
+    }
+    
+    .pname {
+        display: inline-block;
+        /* margin-right: 15px; */
+        color: white;
+        letter-spacing: 1%;
+        font-size: 1.5em;
+    }
+    
+    .foot {
+        display: flex;
+        align-items: center;
+        margin-left: 2%;
+    }
+    
+    .symbol {
+        margin: 0.2% 15px;
+        /* background-color: white; */
+    }
+    .social{
+        color: black;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5em;
+        
+    }
+    .icons{
+        margin: 15px 0px;
+        gap: 15px;
+        display: flex;
+        margin-bottom:1%;
+    }
+    
+    .social-media{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .icons svg{
+        cursor: pointer;
+    }
+    main{
+     
+    }
+    
+    
+    
+</style>

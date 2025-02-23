@@ -1,12 +1,12 @@
 {% extends "main.html" %}
-
+ {% load static %}
 {% block title %}
     Base-home
 {% endblock title %}
 
 {% block style %}
 <style>
-    background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000);
+    {% comment %} background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000); {% endcomment %}
 </style>
 {% endblock style %}
 
@@ -14,6 +14,81 @@
 
 {% block content %}
  <body>
-    this
+    <div class="main">
+        <!-- <div class="bg">
+                <img  src="Images/BG.jpg" alt="">
+            </div> -->
+    </div>
+
+    <div class="content">
+        <div class="heading">Welcome to CrowdManager</div>
+        <div class="subheading">Manage your crowd</div>
+        <div class="btns">
+            {% if request.user.is_authenticated %}
+            <h4 class="">Hello&nbsp;{{request.user}}</h4>
+            <a href="{% url 'logout'%}" class="red">logout</a>
+            {% else %}
+            <a class="btn1" href="{% url 'login'%}">Login</a>
+            <a class="btn2" href="{% url 'register'%}">Sign&nbsp;Up</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="separator">
+    </div>
+    <section class="first">
+        <div class="text">
+            <span>A Crowd Manager Website helps organizers efficiently manage large gatherings, ensuring safety,
+                coordination, and real-time monitoring. With features like event planning, live crowd tracking,
+                emergency alerts, and access control, the platform enhances security and improves event flow. Users can
+                register, analyze attendance, and integrate AI-driven crowd predictions to prevent congestion. The site
+                provides mobile accessibility, allowing on-the-go monitoring for event staff. Advanced analytics offer
+                insights into crowd movement, helping optimize future events. Whether for concerts, sports events, or
+                public gatherings, a crowd manager website is essential for smooth operations and safety
+                compliance.</span>
+        </div>
+        <!-- <div class="secimg">
+            <img src="" alt="">
+        </div> -->
+    </section>
+    <div class="separator">
+    </div>
+    <section class="second">
+        <div class="secimg">
+            <img src="{% static "images/bhid.jpg" %}" alt="">
+        </div>
+        <!-- <div class="text">
+            <span> Our website is use to manage crowd of people in many events like this image by using featurs of
+                moniter in which event manager can see crowd by live video and get message accoeding to it and can easly
+                manage.</span>
+        </div> -->
+    </section>
+    <div class="separator">
+    </div>
+    
+    
+
+    <section class="diff">
+        <div class="text">
+            <span>our website can convert crowd from this to this </span>
+        </div>
+        <div class="secimg">
+            <img src="{% static "images/arrow.jpg" %}" alt="">
+        </div>
+    </section>
+    <div class="separator">
+    </div>
+    <section class="second">
+        <!-- <div class="text">
+            <span>Our website is use to manage crowd of people in many events like this image by using featurs of
+                moniter in which event manager can see crowd by live video and get message accoeding to it and can easly
+                manage.</span>
+        </div> -->
+        <div class="secimg">
+            <img src="{% static "images/low.jpg" %}" alt="">
+        </div>
+    </section>
+    <div class="separator">
+    </div>
+
  </body>
 {% endblock content %}

@@ -8,13 +8,13 @@ Event-main
 {% block style %}
 
 <style>
-    <style>
-        * {
+  
+        /* * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+         */
         .down {
             max-width: 100vw;
             margin: auto;
@@ -29,13 +29,10 @@ Event-main
         }
         
        
-        .events{
-            background-color:black;
-        }
-    
+       
         .boxes .box {
             padding: 23px;
-            background-color: #f9f9f9;
+            background-color:beige;
             border-radius: 5px;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visual separation */
@@ -54,12 +51,14 @@ Event-main
             background-color: #5cb85c;
             cursor: pointer;
             transition: all 0.3s;
+            margin:2vh 0vh;
         }
     
         .boxes button a {
+
             color: white;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 15px;
             font-weight: 700;
         }
     
@@ -74,6 +73,21 @@ Event-main
                 grid-template-columns: 1fr; /* One column on very small screens */
             }
         }
+
+
+        .create-event{
+            color: none;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #5cb85c;
+            border-radius: 6px;
+            color: rgb(255, 250, 250);
+            margin:5vh;
+        }
+
+        .create-event-box{
+            margin-top: 5vh;
+        }
     </style>
 </style>
 {% endblock style %}
@@ -83,7 +97,7 @@ Event-main
 
 
 {% block content %}
-<p>This is events page here</p>
+
 
 
 
@@ -103,8 +117,8 @@ Event-main
 {% endfor %} {% endcomment %}
    
 {% comment %} {% for event in events %}
+<a class="create-event" href="{% url 'create-form'%}">Create&nbsp;Event</a>
 <div class="main-content">
-    <a href="{% url 'create-form'%}">Create&nbsp;Event</a>
     <div class="container">
         <div class="event-boxes">
             <div class="box">
@@ -134,8 +148,9 @@ Event-main
 </div> {% endcomment %}
 
 
-
-<a href="{% url 'create-form'%}">Create&nbsp;Event</a>
+<div class="create-event-box">
+<a href="{% url 'create-form'%}" class="create-event">Create&nbsp;Event</a>
+</div>
 {% for event in events %}
 <main>
 
@@ -147,8 +162,8 @@ Event-main
                     <h3>Event-description</h3>
                     <p>{{event.event_description}}</p>
                     {% if request.user.is_authenticated and request.user == event.host %}
-                    <button><a href="{% url 'monitorHome' event.id%}">Monitort</a></button>
-                    <button><a href="{% url 'update-event' event.id%}">Details</a></button>
+                    <button><a href="{% url 'monitorHome' event.id%}">Monitor</a></button>
+                    <button><a href="{% url 'update-event' event.id%}">Edit</a></button>
                     <button><a href="{% url 'delete-event' event.id%}">Remove</a></button>
                     {% endif %}
                 </div>
