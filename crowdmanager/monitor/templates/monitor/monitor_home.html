@@ -1,100 +1,142 @@
-{% extends "main.html" %}
-
-{% block title %}
-    Monitor-home
-{% endblock title %}
-
+{% extends "main.html" %} 
+{% load static %} 
+{% block title %} Monitor-home 
+{%endblock title %}
 {% block style %}
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000);
-            position: absolute;
-            /* background-color: whitesmoke; */
-            /* background-color: rgb(65, 63, 63); */
-        }
-        
-        
-        .home{
-            font-weight: 400;
-           /* padding: 5px; */
-           font-size: 24px;
-           letter-spacing: 1px;
-           border-radius: 5px;
-           background-color: rgb(214, 205, 205);
-           padding: 2px;
-           color: rgb(60, 55, 55);
-        }
-        main{
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            grid-template-rows: 83vh;
-            justify-content: center;
-            /* gap: 0.1%; */
-            justify-items: center;
-            align-items: center;
-            background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000);
-            {% comment %} background-color: rgba(0, 0, 0, 0.855); {% endcomment %}
-            /* position: relative; */
-            /* border: 1px solid rgb(51, 47, 47) ; */
-        }
-        .com{
-            /* position: relative; */
-            /* top: 8vh; */
-            /* left: 0; */
-            /* position: fixed; */
-           height: 80vh;
-           width: 25vw;
-           border-radius: 5px;
-           background-color: rgba(0, 0, 0, 0.259);
-           border: 2px solid rgb(65, 63, 63);
-           overflow: auto;
-           color: whitesmoke;
-           /* box-shadow:0px 0px 5px 0px inset;; */
-        }
-        .view{
-            height: 80vh;
-            width: 63vw;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.259) ;
-            border: 2px solid rgb(65, 63, 63);
-            justify-items: center;
-            align-content: center;
-         }
-         .live{
-            height: 50vh;
-            width: 50vw;
-         }
-        
-        img{
-            /* margin-left: 80vw; */
-            border-radius: 50%;
-            margin-right: 2px;
-        }
-        .pname{
-           display: inline-block;
-           margin-right: 15px;
-           color: white;
-           letter-spacing: 1px;
-           font-size: 20px;
-        }
-        
-    </style> 
-{% endblock style %}
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background: linear-gradient(180deg, #0f061a, #241331, #29083d, #370a34, #000000);
+        position: absolute;
+        /* background-color: whitesmoke; */
+        /* background-color: rgb(65, 63, 63); */
+    }
 
 
-{% block content %}
-    
+    .home{
+        font-weight: 400;
+       /* padding: 5px; */
+       font-size: 24px;
+       letter-spacing: 1px;
+       border-radius: 5px;
+       background-color: rgb(214, 205, 205);
+       padding: 2px;
+       color: rgb(60, 55, 55);
+    }
+    main{
+  /* width: 100%; */
+  display: grid;
+  width: 100%;
+  height: 85vh;
+  grid-template-columns: 70vw 30vw;
+  /* grid-template-rows: 87vh; */
+
+  /* gap: 0.1%; */
+  justify-items: center;
+  align-content: center;
+
+  /* position: relative; */
+  /* border: 1px solid rgb(51, 47, 47) ; */
+  }
+  .com{
+  /* position: relative; */
+  /* top: 8vh; */
+  /* left: 0; */
+  /* position: fixed; */
+  height: 80vh;
+  width: 25vw;
+  border-radius: 5px;
+  background-color: #514a60;
+  border: 2px solid rgb(65, 63, 63);
+  overflow: auto;
+  color: whitesmoke;
+  font-size: 1.2em;
+  /* box-shadow:0px 0px 5px 0px inset;; */
+  }
+  .view{
+  height: 80vh;
+  width: 65vw;
+  display: grid;
+  border-radius: 5px;
+  /* background-color: #514a60 ; */
+  border: 2px solid rgb(65, 63, 63);
+  justify-items: center;
+  align-content: center;
+  }
+  .live{
+  height: 50vh;
+  width: 50vw;
+  }
+
+
+
+  @media only screen and (max-width:970px){
+  main{
+    margin-top: 2vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    /* justify-items: center; */
+    align-items: center;
+  }
+  .com{
+  height: 30vh;
+  width: 70vw;
+  }
+  .view{
+  height: 50vh;
+  width: 70vw;
+  }
+
+  }
+  @media only screen and (max-height: 800px){
+  main{
+    height: 90vh;
+  }
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+
+  }
+  @media only screen and (max-height: 630px){
+  main{
+    height: 90vh;
+  }
+  .logo {
+    height: 30px;
+    width: 30px;
+  }
+
+  }
+
+    img{
+        /* margin-left: 80vw; */
+        border-radius: 50%;
+        margin-right: 2px;
+    }
+    .pname{
+       display: inline-block;
+       margin-right: 15px;
+       color: white;
+       letter-spacing: 1px;
+       font-size: 20px;
+    }
+  
+  
+</style>
+{% endblock style %} {% block content %}
+
 <main>
-    <div class="com">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora, corporis!
-    </div>
-    <div class="view">
-<video src="video.mp4" class="live" controls ></video>
-    </div>
+  <div class="view">
+    <video src="video.mp4" class="live" controls></video>
+  </div>
+  <div class="com">
+      This is the comment pannel at where when crowd is detected then message or alert will apppear here.... 
+  </div>
 </main>
-
 {% endblock content %}

@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
-
+from.models import Contact
+from datetime import datetime
 def baseHome(request):
     return render(request,'base/base_home.html')
 
@@ -40,6 +41,17 @@ def logoutPage(request):
     return redirect('baseHome')
     
 def contact(request):
+    
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        desc = request.POST.get('desc')
+        contact = Contact(name = name, email = email, phone= phone,desc = desc,date = datetime.today())
+        contact.save()
+        return redirect('baseHome')
+        messages.success(request,'your message has been sent ')
+
     return render(request,'base/contactus.html')
 
 def register(request):

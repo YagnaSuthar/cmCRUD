@@ -35,7 +35,7 @@
         background-color:#ebebdb;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        
+        text-align:center;
         transition: background-color 0.3s ease;
         transform-style: preserve-3d; /* Enable 3D transforms */
         perspective: 1000px; /* Create the 3D effect */
@@ -56,7 +56,7 @@
         border: none;
     }
     .container label{
-        margin-right: 628px;
+        {% comment %} margin-right: 608px; {% endcomment %}
         color: black;
     }
     .container #descfield{
@@ -102,16 +102,35 @@
 {% block content %}
 <div class="card-contact-container">
     <div class="container">
-        <h1>Contatc US</h1>
-        <label>Name</label>
-        <input type="text" placeholder="Enter Your Name ....">
-        <label>Email</label>
-        <input type="email" placeholder="Enter Your Email ....">
-        <label>Phone</label>
-        <input type="phone" placeholder="Enter Your phone ....">
-        <label for="desc" id="descfield">Tell me about what you want to Contact us</label>
-        <textarea name="description" id="desc" rows="3"></textarea>
-        <button class="submit-btn">Submit</button>
+        <form method="post" action="{% url 'contactus' %}">
+            {% csrf_token %}
+            <!-- Name Input -->
+            <div class="form-group py-1">
+                <label for="name">Enter Your Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+            </div>
+    
+            <!-- Email Input -->
+            <div class="form-group py-1">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email">
+            </div>
+    
+            <!-- Phone Input -->
+            <div class="form-group py-1">
+                <label for="phone">Phone Number</label>
+                <input type="phone" class="form-control" name="phone" id="phone" placeholder="Enter Your Phone Number">
+            </div>
+    
+            <!-- Message Textarea -->
+            <div class="form-group py-1">
+                <label for="desc">Tell me about what you want to contact me for...</label>
+                <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+            </div>
+    
+            <!-- Submit Button -->
+            <button class="submit-btn" type="submit">Submit</button>
+        </form>
     </div>
 </div>
 

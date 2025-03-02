@@ -39,15 +39,15 @@
       </header>
 {% endcomment %} 
 
+
 <header>
   <div class="leftnav">
       <img class="logo" src="{% static "images/logo.png" %}" alt="Error" height="" width="">
       <div class="pname">CrowdManager</div>
   </div>
-  <nav>
+   <nav class="nav">
       <a  href="{% url 'baseHome'%}" class="home a">Home</a>
       <a href="{% url 'eventsHome'%}" class="management a">Management</a>
-      <a href="{% url 'eventsHome'%}" class="aboutus a">Monitor</a>
       <a href="{% url 'contactus'%}" class="contectus a">Contact&nbsp;us</a>
       {% if request.user.is_authenticated %}
       <h4 class="a">Hello&nbsp;{{request.user}}</h4>
@@ -55,9 +55,15 @@
       {% else %}
       <a href="{% url 'login' %}" class="a">Login/sign&nbsp;up</a>
       {% endif %}
-  </nav>
-</header>
-
+    </nav> 
+    <div class="box">
+      <div class="li l1"></div>
+      <div class="li l2"></div>
+      <div class="li l3"></div>
+    </div>
+  </header>
+  
+  {% comment %} <a href="{% url 'eventsHome'%}" class="aboutus a">Monitor</a> {% endcomment %}
 
 
 
@@ -73,13 +79,22 @@
   <div class="foot">
       <div class="social">social</div>
       <div class="icons">
+        <a href="https://youtube.com/@crowdmanager-b8l?si=qOXuJvSxf-i0udLy">
           <img class="symbol youtube" src="{% static 'svg/3.svg'%}" alt="YouTube" border="0" height="30px"
               width="30x">
+        </a>
           <!-- <img class="symbol youtube" src="Free download _ HD PNG youtube logo png - Image ID 474247 _.jpeg" alt=""  height="70px" width="70px"> -->
+          <a href="https://www.instagram.com/crowd_manager.2025?utm_source=qr&igsh=aXdiMGpsdjJ6M203">
           <img class="symbol Instagram" src="{% static 'svg/instagram.svg'%}" alt="" height="30px" width="30px">
+          </a>
+          <a href="https://in.linkedin.com/in/crowd-manager-961026353">
           <img class="symbol whatsapp" src="{% static 'svg/2.svg'%}" alt="" height="30px" width="30px">
-          <img class="symbol github" src="{% static 'svg/4.svg'%}" alt="" height="30px" width="30px">
-      </div>
+          </a>
+          <a href="https://github.com/YagnaSuthar/cmCRUD">
+         
+            <img class="symbol github" src="{% static 'svg/4.svg'%}" alt="" height="30px" width="30px">
+          </a>
+          </div>
   </div>
 </footer>
 
@@ -153,7 +168,11 @@
           </div>
         </div>
       </footer> {% endcomment %}
+      <script src="{% static "scripts/main.js" %}"></script>
+       
       <script>
+
+        
       {% block script %}
       {% endblock script %}
       </script>
